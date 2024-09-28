@@ -6,17 +6,20 @@ edition = "2021"
 license = "MIT OR Apache-2.0"
 
 [dependencies]
+embassy-executor = { version = "0.6.0" }
+embassy-time = { version = "0.3.2", features = ["generic-queue"] }
+esp-hal-embassy = { version = "*", features = ["esp32"] }
+esp-println = { version = "0.11.0", features = ["esp32", "log"] }
 esp-backtrace = { version = "0.14.0", features = [
     "esp32",
     "exception-handler",
     "panic-handler",
     "println",
 ] }
-esp-hal = { version = "0.20.1", features = [ "esp32" ] }
-esp-println = { version = "0.11.0", features = ["esp32", "log"] }
+esp-hal = { version = "0.20.1", features = ["esp32"] }
 log = { version = "0.4.21" }
 embedded-io = "0.6.1"
-esp-wifi = { version = "0.8.0", features = [
+esp-wifi = { version = "0.9.1", features = [
     "esp32",
     "phy-enable-usb",
     "utils",
@@ -40,7 +43,7 @@ smoltcp = { version = "0.11.0", default-features = false, features = [
 opt-level = "s"
 
 [profile.release]
-codegen-units = 1 # LLVM can perform better optimizations using a single thread
+codegen-units = 1        # LLVM can perform better optimizations using a single thread
 debug = 2
 debug-assertions = false
 incremental = false
