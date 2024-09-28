@@ -2,12 +2,38 @@
 	"image": "espressif/idf-rust:esp32_latest",
 	"customizations": {
 		"vscode": {
+			"settings": {
+				"editor.formatOnPaste": true,
+				"editor.formatOnSave": true,
+				"editor.formatOnSaveMode": "file",
+				"editor.formatOnType": true,
+				"lldb.executable": "/usr/bin/lldb",
+				"files.watcherExclude": {
+					"**/target/**": true
+				},
+				"rust-analyzer.checkOnSave.command": "clippy",
+				"rust-analyzer.checkOnSave.allTargets": false,
+				"[rust]": {
+					"editor.defaultFormatter": "rust-lang.rust-analyzer"
+				}
+			},
 			"extensions": [
 				"ms-azuretools.vscode-docker",
 				"rust-lang.rust-analyzer",
 				"mhutchie.git-graph",
-				"albert.TabOut"
+				"albert.TabOut",
+				"serayuzgur.crates",
+				"yzhang.markdown-all-in-one",
+				"ms-vscode.cpptools",
+				"actboy168.tasks",
+				"tamasfe.even-better-toml"
 			]
-		}
+		},
+		"forwardPorts": [
+			8000,
+			3333
+		],
+		"workspaceMount": "source=${localWorkspaceFolder},target=/home/esp/chicken_gate,type=bind,consistency=cached",
+		"workspaceFolder": "/home/esp/chicken_gate"
 	}
 }
