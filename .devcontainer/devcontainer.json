@@ -33,7 +33,7 @@
 			8000,
 			3333
 		],
-		"workspaceMount": "source=${localWorkspaceFolder},target=/home/esp/chicken_gate,type=bind,consistency=cached",
-		"workspaceFolder": "/home/esp/chicken_gate"
+		// "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/chicken-gate-rust,type=bind,consistency=cached",
+		"workspaceFolder": "/workspaces/chicken-gate-rust"
 	}
 }
