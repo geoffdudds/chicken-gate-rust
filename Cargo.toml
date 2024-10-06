@@ -6,6 +6,7 @@ edition = "2021"
 license = "MIT OR Apache-2.0"
 
 [dependencies]
+sunrise-next = { version = "*" }
 embassy-executor = { version = "0.6.0" }
 embassy-time = { version = "0.3.2", features = ["generic-queue"] }
 esp-hal-embassy = { version = "*", features = ["esp32"] }

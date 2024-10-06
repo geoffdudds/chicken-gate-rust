@@ -6,34 +6,7 @@ use embassy_executor::Spawner;
 use embassy_time::{Duration, Timer};
 use esp_backtrace as _;
 use esp_hal::{clock::ClockControl, peripherals::Peripherals, prelude::*, system::SystemControl};
-// use esp_hal_embassy;
-// use esp_println::print;
-
-// #[entry]
-// fn main() -> ! {
-//     let peripherals = Peripherals::take();
-//     let system = SystemControl::new(peripherals.SYSTEM);
-
-//     let clocks = ClockControl::max(system.clock_control).freeze();
-//     let delay = Delay::new(&clocks);
-
-//     esp_println::logger::init_logger_from_env();
-
-//     let timg0 = esp_hal::timer::timg::TimerGroup::new(peripherals.TIMG0, &clocks);
-//     let _init = esp_wifi::initialize(
-//         esp_wifi::EspWifiInitFor::Wifi,
-//         timg0.timer0,
-//         esp_hal::rng::Rng::new(peripherals.RNG),
-//         peripherals.RADIO_CLK,
-//         &clocks,
-//     )
-//     .unwrap();
-
-//     loop {
-//         log::info!("Hello world!");
-//         delay.delay(500.millis());
-//     }
-// }
+use sunrise::{sunrise_sunset, DawnType, SolarDay, SolarEvent};
 
 #[embassy_executor::task]
 async fn one_second_task() {
@@ -65,4 +38,11 @@ async fn main(spawner: Spawner) {
         count += 1;
         Timer::after(Duration::from_millis(5_000)).await;
     }
+}
+
+#[embassy_executor::task]
+async fn print_circadia_stats() {
+    let dawn = SolarDay::new(43.6532, -79.3832, 2016, 1, 1)
+        .with_altitude(54.)
+        .event_time(SolarEvent::Dawn(DawnType::Civil));
 }
