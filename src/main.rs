@@ -8,6 +8,9 @@ use esp_backtrace as _;
 use esp_hal::{clock::ClockControl, peripherals::Peripherals, prelude::*, system::SystemControl};
 use sunrise::{sunrise_sunset, DawnType, SolarDay, SolarEvent};
 
+mod chicken;
+use crate::chicken::Chicken;
+
 #[embassy_executor::task]
 async fn one_second_task() {
     let mut count = 0;
